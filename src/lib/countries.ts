@@ -33,6 +33,7 @@ export const COUNTRIES: Country[] = [
   { code: "SG", name: "Singapore",     dial: "+65",  flag: "🇸🇬" },
   { code: "IN", name: "India",         dial: "+91",  flag: "🇮🇳" },
   { code: "AE", name: "UAE",           dial: "+971", flag: "🇦🇪" },
+  { code: "SA", name: "Saudi Arabia",  dial: "+966", flag: "🇸🇦" },
   { code: "IL", name: "Israel",        dial: "+972", flag: "🇮🇱" },
   { code: "ZA", name: "South Africa",  dial: "+27",  flag: "🇿🇦" },
   { code: "NG", name: "Nigeria",       dial: "+234", flag: "🇳🇬" },

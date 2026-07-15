@@ -152,7 +152,7 @@ function ApprovalsPage() {
         e.merchant ?? "",
         (e as any).categories?.name ?? "",
         Number(e.amount).toFixed(2),
-        e.currency ?? "USD",
+        e.currency ?? "SAR",
       ];
     });
     return { headers, rows };

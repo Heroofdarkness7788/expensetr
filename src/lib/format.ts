@@ -1,4 +1,4 @@
-export function fmtMoney(n: number | string | null | undefined, currency = "USD") {
+export function fmtMoney(n: number | string | null | undefined, currency = "SAR") {
   const v = typeof n === "string" ? parseFloat(n) : n ?? 0;
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -10,9 +10,11 @@ export function fmtMoney(n: number | string | null | undefined, currency = "USD"
 export const formatMoney = fmtMoney;
 
 export const CURRENCIES: { code: string; symbol: string; label: string }[] = [
+  { code: "SAR", symbol: "﷼", label: "Saudi Riyal" },
   { code: "USD", symbol: "$", label: "US Dollar" },
   { code: "EUR", symbol: "€", label: "Euro" },
   { code: "GBP", symbol: "£", label: "British Pound" },
+  { code: "AED", symbol: "د.إ", label: "UAE Dirham" },
   { code: "CAD", symbol: "CA$", label: "Canadian Dollar" },
   { code: "AUD", symbol: "A$", label: "Australian Dollar" },
   { code: "JPY", symbol: "¥", label: "Japanese Yen" },
@@ -20,6 +22,7 @@ export const CURRENCIES: { code: string; symbol: string; label: string }[] = [
   { code: "MXN", symbol: "MX$", label: "Mexican Peso" },
   { code: "INR", symbol: "₹", label: "Indian Rupee" },
 ];
+
 
 export function currencySymbol(code: string): string {
   return CURRENCIES.find((c) => c.code === code)?.symbol ?? code;

@@ -286,3 +286,37 @@ body::-webkit-scrollbar,
   }
 }
 
+/* Global page & card motion */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+main { animation: page-fade-in 0.35s ease-out both; }
+
+/* Subtle lift on interactive cards / list rows */
+[data-slot="card"],
+.hover-lift {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+[data-slot="card"]:hover,
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -18px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+
+/* Staggered rise for lists of cards */
+[data-slot="card"] { animation: card-rise 0.4s ease-out both; }
+
+/* Buttons: soft press feedback */
+button:not(:disabled):active { transform: translateY(1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  main, [data-slot="card"] { animation: none !important; }
+  [data-slot="card"]:hover, .hover-lift:hover { transform: none; box-shadow: none; }
+}
+
+

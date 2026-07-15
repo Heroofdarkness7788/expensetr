@@ -109,7 +109,7 @@ function ExpensesIndex() {
     const m = new Map<string, { total: number; currency: string }>();
     for (const [label, items] of groups) {
       const total = items.reduce((s, e) => s + Number(e.amount || 0), 0);
-      m.set(label, { total, currency: items[0]?.currency ?? "USD" });
+      m.set(label, { total, currency: items[0]?.currency ?? "SAR" });
     }
     return m;
   }, [groups]);

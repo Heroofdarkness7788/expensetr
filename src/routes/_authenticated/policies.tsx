@@ -299,13 +299,13 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
                 </select>
               </FieldStack>
               {(draft.type === "amount_max" || draft.type === "category_amount_max") && (
-                <FieldStack label="Max amount (USD)">
+                <FieldStack label="Max amount (SAR)">
                   <input type="number" value={draft.max ?? ""} onChange={(e) => setDraft({ ...draft, max: Number(e.target.value) })}
                     className="w-full bg-transparent outline-none text-base font-medium tabular-nums" />
                 </FieldStack>
               )}
               {draft.type === "receipt_required_above" && (
-                <FieldStack label="Above amount (USD)">
+                <FieldStack label="Above amount (SAR)">
                   <input type="number" value={draft.amount ?? ""} onChange={(e) => setDraft({ ...draft, amount: Number(e.target.value) })}
                     className="w-full bg-transparent outline-none text-base font-medium tabular-nums" />
                 </FieldStack>
@@ -329,7 +329,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
                       className="w-full bg-transparent outline-none text-sm" placeholder="Meals" />
                   </FieldStack>
                   <div className="grid grid-cols-2 gap-3">
-                    <FieldStack label="Max amount (USD)">
+                    <FieldStack label="Max amount (SAR)">
                       <input type="number" value={draft.max ?? ""} onChange={(e) => setDraft({ ...draft, max: Number(e.target.value) })}
                         className="w-full bg-transparent outline-none text-base font-medium tabular-nums" />
                     </FieldStack>
@@ -347,7 +347,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
               )}
               {draft.type === "mileage_rate" && (
                 <div className="grid grid-cols-2 gap-3">
-                  <FieldStack label="Rate (USD)">
+                  <FieldStack label="Rate (SAR)">
                     <input type="number" step="0.01" value={draft.rate ?? ""} onChange={(e) => setDraft({ ...draft, rate: Number(e.target.value) })}
                       className="w-full bg-transparent outline-none text-base font-medium tabular-nums" />
                   </FieldStack>

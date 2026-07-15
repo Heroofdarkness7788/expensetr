@@ -5,7 +5,7 @@ import { z } from "zod";
 
 const expenseInput = z.object({
   amount: z.number().positive(),
-  currency: z.string().default("USD"),
+  currency: z.string().default("SAR"),
   merchant: z.string().min(1).max(200).optional().nullable(),
   expense_date: z.string(),
   category_id: z.string().uuid().optional().nullable(),
@@ -490,7 +490,7 @@ export const listPendingReportsWithTotals = createServerFn({ method: "GET" })
     return reports.map((r) => ({
       ...r,
       profile: profById.get(r.user_id) ?? null,
-      totals: byReport.get(r.id) ?? { total: 0, currency: "USD", count: 0, flags: 0 },
+      totals: byReport.get(r.id) ?? { total: 0, currency: "SAR", count: 0, flags: 0 },
     }));
   });
 
@@ -526,7 +526,7 @@ export const listAllReportsWithTotals = createServerFn({ method: "GET" })
     return reports.map((r) => ({
       ...r,
       profile: profById.get(r.user_id) ?? null,
-      totals: byReport.get(r.id) ?? { total: 0, currency: "USD", count: 0, flags: 0 },
+      totals: byReport.get(r.id) ?? { total: 0, currency: "SAR", count: 0, flags: 0 },
     }));
   });
 
@@ -813,7 +813,7 @@ export const findDuplicateExpenses = createServerFn({ method: "POST" })
   .inputValidator((d) =>
     z.object({
       amount: z.number().positive(),
-      currency: z.string().default("USD"),
+      currency: z.string().default("SAR"),
       merchant: z.string().nullable().optional(),
       expense_date: z.string(),
       exclude_id: z.string().uuid().nullable().optional(),
@@ -1360,7 +1360,7 @@ export const askAi = createServerFn({ method: "POST" })
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
         messages: [
-          { role: "system", content: "You are a friendly expense assistant. Answer concisely (max 4 sentences) using the user's expense rows AND the company policies provided. When the user asks about per-diems, limits, or what's reimbursable, quote the policy directly. Currency is USD unless stated. If the data doesn't answer the question, say so." },
+          { role: "system", content: "You are a friendly expense assistant. Answer concisely (max 4 sentences) using the user's expense rows AND the company policies provided. When the user asks about per-diems, limits, or what's reimbursable, quote the policy directly. Currency is SAR unless stated. If the data doesn't answer the question, say so." },
           { role: "user", content: `Active company policies:\n${policyLines || "(none configured)"}\n\nMy expenses (date|category|merchant|amount|status):\n${summary}\n\nQuestion: ${data.question}` },
         ],
       }),

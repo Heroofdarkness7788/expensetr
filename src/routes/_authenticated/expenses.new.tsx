@@ -67,7 +67,7 @@ function NewExpense() {
   const [receiptPath, setReceiptPath] = useState<string | null>(null);
   const [merchant, setMerchant] = useState("");
   const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("SAR");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const [notes, setNotes] = useState("");
@@ -125,7 +125,7 @@ function NewExpense() {
     };
     setMerchant(e.merchant ?? "");
     setAmount(Number(e.amount).toFixed(2));
-    setCurrency(e.currency || "USD");
+    setCurrency(e.currency || "SAR");
     setDate(e.expense_date);
     setCategoryId(e.category_id);
     setNotes(e.notes ?? "");

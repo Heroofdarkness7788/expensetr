@@ -300,7 +300,7 @@ function ReportBuilderPage() {
     doc.text(
       `${rangeLabel}  ·  ${result?.count ?? 0} rows  ·  Total ${fmtMoney(
         result?.grandTotal ?? 0,
-        result?.currency === "—" ? "USD" : result?.currency ?? "USD",
+        result?.currency === "—" ? "SAR" : result?.currency ?? "SAR",
       )}`,
       40,
       58,
@@ -880,7 +880,7 @@ function PreviewPanel({
   activeName: string;
 }) {
   const total = result?.grandTotal ?? 0;
-  const currency = result?.currency === "—" ? "USD" : result?.currency ?? "USD";
+  const currency = result?.currency === "—" ? "SAR" : result?.currency ?? "SAR";
   const isMixed = result?.currency === "—";
   const rowCount = result?.count ?? 0;
   const avg = rowCount > 0 ? total / rowCount : 0;
@@ -1129,7 +1129,7 @@ function GroupedView({
     <ul className="divide-y divide-white/5">
       {groups.map((g) => {
         const open = openKey === g.key;
-        const cur = g.currency === "—" ? "USD" : g.currency;
+        const cur = g.currency === "—" ? "SAR" : g.currency;
         return (
           <li key={g.key}>
             <button

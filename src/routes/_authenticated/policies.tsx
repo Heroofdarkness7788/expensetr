@@ -193,7 +193,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
                       <p className="text-xs font-semibold">{p.label}</p>
                     </div>
                     <div className="flex items-center gap-1 rounded-xl bg-background ring-1 ring-border px-2 py-1.5">
-                      <span className="text-xs text-muted-foreground">$</span>
+                      <span className="text-[10px] text-muted-foreground font-semibold">SAR</span>
                       <input
                         autoFocus type="number" step="0.01" value={presetValue}
                         onChange={(e) => setPresetValue(e.target.value)}

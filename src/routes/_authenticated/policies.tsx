@@ -36,7 +36,7 @@ const PRESETS: { icon: typeof Utensils; label: string; hint: string; draft: Part
   { icon: Car, label: "Mileage rate", hint: "SAR 0.67 / km", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "km", severity: "warning" } },
   { icon: Receipt, label: "Receipt required", hint: "Above SAR 25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
   { icon: Ban, label: "No alcohol", hint: "Block category", draft: { name: "No alcohol", type: "category_blocked", category: "Alcohol", severity: "error" } },
-  { icon: Zap, label: "Single-expense cap", hint: "Above $500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
+  { icon: Zap, label: "Single-expense cap", hint: "Above SAR 500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
 ];
 
 function PoliciesPage() {

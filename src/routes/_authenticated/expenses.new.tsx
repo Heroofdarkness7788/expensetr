@@ -371,10 +371,29 @@ function NewExpense() {
             className="mt-6 space-y-3"
           >
             {isParsing && (
-              <div className="rounded-2xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-foreground flex items-center gap-2">
-                <Loader2 className="size-4 animate-spin text-primary" />
-                Parsing your receipt in the background — you can keep editing. Safe to navigate away or refresh.
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative overflow-hidden rounded-2xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-foreground"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="relative inline-flex size-2.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                    <span className="relative inline-flex size-2.5 rounded-full bg-primary" />
+                  </span>
+                  <span className="font-medium">
+                    {job?.status === "queued" ? "Queued…" : "Reading receipt"}
+                    <span className="ocr-dots ml-0.5" aria-hidden>
+                      <span>.</span><span>.</span><span>.</span>
+                    </span>
+                  </span>
+                  <span className="ml-auto text-[11px] text-muted-foreground">Safe to navigate away</span>
+                </div>
+                <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-primary/15">
+                  <div className="ocr-progress h-full w-1/3 rounded-full bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
+                </div>
+                <div className="ocr-shimmer pointer-events-none absolute inset-0" />
+              </motion.div>
             )}
             {parseFailed && (
               <div className="rounded-2xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-foreground flex items-start gap-2">

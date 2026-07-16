@@ -31,10 +31,10 @@ type Draft = {
 };
 
 const PRESETS: { icon: typeof Utensils; label: string; hint: string; draft: Partial<Draft> }[] = [
-  { icon: Utensils, label: "Meals per diem", hint: "$75 / day", draft: { name: "Meals per diem", type: "per_diem", category: "Meals", max: 75, period: "day", severity: "warning" } },
-  { icon: BedDouble, label: "Hotel cap", hint: "$250 / night", draft: { name: "Hotel cap", type: "per_diem", category: "Lodging", max: 250, period: "night", severity: "warning" } },
-  { icon: Car, label: "Mileage rate", hint: "$0.67 / mi", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "mi", severity: "warning" } },
-  { icon: Receipt, label: "Receipt required", hint: "Above $25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
+  { icon: Utensils, label: "Meals per diem", hint: "SAR 75 / day", draft: { name: "Meals per diem", type: "per_diem", category: "Meals", max: 75, period: "day", severity: "warning" } },
+  { icon: BedDouble, label: "Hotel cap", hint: "SAR 250 / night", draft: { name: "Hotel cap", type: "per_diem", category: "Lodging", max: 250, period: "night", severity: "warning" } },
+  { icon: Car, label: "Mileage rate", hint: "SAR 0.67 / km", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "km", severity: "warning" } },
+  { icon: Receipt, label: "Receipt required", hint: "Above SAR 25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
   { icon: Ban, label: "No alcohol", hint: "Block category", draft: { name: "No alcohol", type: "category_blocked", category: "Alcohol", severity: "error" } },
   { icon: Zap, label: "Single-expense cap", hint: "Above $500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
 ];

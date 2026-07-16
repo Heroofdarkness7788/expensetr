@@ -31,12 +31,12 @@ type Draft = {
 };
 
 const PRESETS: { icon: typeof Utensils; label: string; hint: string; draft: Partial<Draft> }[] = [
-  { icon: Utensils, label: "Meals per diem", hint: "$75 / day", draft: { name: "Meals per diem", type: "per_diem", category: "Meals", max: 75, period: "day", severity: "warning" } },
-  { icon: BedDouble, label: "Hotel cap", hint: "$250 / night", draft: { name: "Hotel cap", type: "per_diem", category: "Lodging", max: 250, period: "night", severity: "warning" } },
-  { icon: Car, label: "Mileage rate", hint: "$0.67 / mi", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "mi", severity: "warning" } },
-  { icon: Receipt, label: "Receipt required", hint: "Above $25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
+  { icon: Utensils, label: "Meals per diem", hint: "SAR 75 / day", draft: { name: "Meals per diem", type: "per_diem", category: "Meals", max: 75, period: "day", severity: "warning" } },
+  { icon: BedDouble, label: "Hotel cap", hint: "SAR 250 / night", draft: { name: "Hotel cap", type: "per_diem", category: "Lodging", max: 250, period: "night", severity: "warning" } },
+  { icon: Car, label: "Mileage rate", hint: "SAR 0.67 / km", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "km", severity: "warning" } },
+  { icon: Receipt, label: "Receipt required", hint: "Above SAR 25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
   { icon: Ban, label: "No alcohol", hint: "Block category", draft: { name: "No alcohol", type: "category_blocked", category: "Alcohol", severity: "error" } },
-  { icon: Zap, label: "Single-expense cap", hint: "Above $500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
+  { icon: Zap, label: "Single-expense cap", hint: "Above SAR 500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
 ];
 
 function PoliciesPage() {
@@ -193,7 +193,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
                       <p className="text-xs font-semibold">{p.label}</p>
                     </div>
                     <div className="flex items-center gap-1 rounded-xl bg-background ring-1 ring-border px-2 py-1.5">
-                      <span className="text-xs text-muted-foreground">$</span>
+                      <span className="text-[10px] text-muted-foreground font-semibold">SAR</span>
                       <input
                         autoFocus type="number" step="0.01" value={presetValue}
                         onChange={(e) => setPresetValue(e.target.value)}
@@ -222,7 +222,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
           <Sparkles className="size-4 text-primary" />
           <p className="text-sm font-semibold">Describe a policy</p>
         </div>
-        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed $75 per person" or "no alcohol".</p>
+        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed SAR 75 per person" or "no alcohol".</p>
         <div className="flex gap-2">
           <input value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)}
             placeholder="Describe in plain English…"
@@ -399,13 +399,13 @@ function FieldStack({ label, children }: { label: string; children: React.ReactN
 
 function ruleSummary(r: { type?: string; max?: number; amount?: number; category?: string; merchant?: string; period?: string; rate?: number; unit?: string }) {
   switch (r.type) {
-    case "amount_max": return `Any expense over $${r.max} is flagged.`;
-    case "category_amount_max": return `${r.category ?? "?"} over $${r.max} is flagged.`;
-    case "receipt_required_above": return `Receipt required above $${r.amount}.`;
+    case "amount_max": return `Any expense over SAR ${r.max} is flagged.`;
+    case "category_amount_max": return `${r.category ?? "?"} over SAR ${r.max} is flagged.`;
+    case "receipt_required_above": return `Receipt required above SAR ${r.amount}.`;
     case "category_blocked": return `${r.category ?? "?"} not reimbursable.`;
     case "merchant_blocked": return `Merchant contains "${r.merchant}".`;
-    case "per_diem": return `${r.category ?? "?"} per-diem: $${r.max} / ${r.period ?? "day"}.`;
-    case "mileage_rate": return `Mileage reimbursed at $${r.rate} / ${r.unit ?? "mi"}.`;
+    case "per_diem": return `${r.category ?? "?"} per-diem: SAR ${r.max} / ${r.period ?? "day"}.`;
+    case "mileage_rate": return `Mileage reimbursed at SAR ${r.rate} / ${r.unit ?? "km"}.`;
     default: return "—";
   }
 }

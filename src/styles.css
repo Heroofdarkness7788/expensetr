@@ -319,4 +319,49 @@ button:not(:disabled):active { transform: translateY(1px); }
   [data-slot="card"]:hover, .hover-lift:hover { transform: none; box-shadow: none; }
 }
 
+/* ===== OCR receipt-parsing animation =====
+   Indeterminate sliding progress bar + subtle scanning shimmer + typing dots. */
+@keyframes ocr-progress-slide {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(420%); }
+}
+.ocr-progress {
+  animation: ocr-progress-slide 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  box-shadow: 0 0 12px 0 color-mix(in oklab, var(--primary) 60%, transparent);
+}
+@keyframes ocr-shimmer-sweep {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+.ocr-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, var(--primary) 22%, transparent) 50%,
+    transparent 70%
+  );
+  animation: ocr-shimmer-sweep 2s ease-in-out infinite;
+}
+@keyframes ocr-dot-blink {
+  0%, 20%   { opacity: 0.2; }
+  50%       { opacity: 1; }
+  80%, 100% { opacity: 0.2; }
+}
+.ocr-dots span {
+  display: inline-block;
+  animation: ocr-dot-blink 1.2s infinite;
+}
+.ocr-dots span:nth-child(2) { animation-delay: 0.2s; }
+.ocr-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ocr-progress { animation: none; width: 100%; }
+  .ocr-shimmer::after, .ocr-dots span { animation: none; }
+}
+
+
 

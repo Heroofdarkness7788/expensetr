@@ -172,8 +172,8 @@ function Login() {
             </motion.button>
 
             <p className="text-center text-xs text-white/50 pt-10 leading-relaxed">
-              Accounts are provisioned by your admin.<br />
-              Need access? <Link to="/forgot-password" className="text-primary font-semibold">Reset password</Link> or contact them.
+              New here? <Link to="/signup" className="text-primary font-semibold">Create an account</Link><br />
+              Forgot your password? <Link to="/forgot-password" className="text-primary font-semibold">Reset it</Link>
             </p>
           </div>
         </div>

@@ -399,13 +399,13 @@ function FieldStack({ label, children }: { label: string; children: React.ReactN
 
 function ruleSummary(r: { type?: string; max?: number; amount?: number; category?: string; merchant?: string; period?: string; rate?: number; unit?: string }) {
   switch (r.type) {
-    case "amount_max": return `Any expense over $${r.max} is flagged.`;
-    case "category_amount_max": return `${r.category ?? "?"} over $${r.max} is flagged.`;
-    case "receipt_required_above": return `Receipt required above $${r.amount}.`;
+    case "amount_max": return `Any expense over SAR ${r.max} is flagged.`;
+    case "category_amount_max": return `${r.category ?? "?"} over SAR ${r.max} is flagged.`;
+    case "receipt_required_above": return `Receipt required above SAR ${r.amount}.`;
     case "category_blocked": return `${r.category ?? "?"} not reimbursable.`;
     case "merchant_blocked": return `Merchant contains "${r.merchant}".`;
-    case "per_diem": return `${r.category ?? "?"} per-diem: $${r.max} / ${r.period ?? "day"}.`;
-    case "mileage_rate": return `Mileage reimbursed at $${r.rate} / ${r.unit ?? "mi"}.`;
+    case "per_diem": return `${r.category ?? "?"} per-diem: SAR ${r.max} / ${r.period ?? "day"}.`;
+    case "mileage_rate": return `Mileage reimbursed at SAR ${r.rate} / ${r.unit ?? "km"}.`;
     default: return "—";
   }
 }

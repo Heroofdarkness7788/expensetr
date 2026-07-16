@@ -35,7 +35,7 @@ const PRESETS: { icon: typeof Utensils; label: string; hint: string; draft: Part
   { icon: BedDouble, label: "Hotel cap", hint: "SAR 250 / night", draft: { name: "Hotel cap", type: "per_diem", category: "Lodging", max: 250, period: "night", severity: "warning" } },
   { icon: Car, label: "Mileage rate", hint: "SAR 0.67 / km", draft: { name: "Mileage rate", type: "mileage_rate", rate: 0.67, unit: "km", severity: "warning" } },
   { icon: Receipt, label: "Receipt required", hint: "Above SAR 25", draft: { name: "Receipt required", type: "receipt_required_above", amount: 25, severity: "error" } },
-  { icon: Ban, label: "No alcohol", hint: "Block category", draft: { name: "No alcohol", type: "category_blocked", category: "Alcohol", severity: "error" } },
+  { icon: Ban, label: "Block entertainment", hint: "Block category", draft: { name: "No entertainment", type: "category_blocked", category: "Entertainment", severity: "error" } },
   { icon: Zap, label: "Single-expense cap", hint: "Above SAR 500", draft: { name: "Single-expense cap", type: "amount_max", max: 500, severity: "warning" } },
 ];
 
@@ -222,7 +222,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
           <Sparkles className="size-4 text-primary" />
           <p className="text-sm font-semibold">Describe a policy</p>
         </div>
-        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed SAR 75 per person" or "no alcohol".</p>
+        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed SAR 75 per person" or "no entertainment expenses".</p>
         <div className="flex gap-2">
           <input value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)}
             placeholder="Describe in plain English…"

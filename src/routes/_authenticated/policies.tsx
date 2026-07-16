@@ -222,7 +222,7 @@ export function PoliciesPanel({ className = "" }: { className?: string }) {
           <Sparkles className="size-4 text-primary" />
           <p className="text-sm font-semibold">Describe a policy</p>
         </div>
-        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed SAR 75 per person" or "no alcohol".</p>
+        <p className="text-xs text-muted-foreground mb-3">e.g. "meals can't exceed SAR 75 per person" or "no entertainment expenses".</p>
         <div className="flex gap-2">
           <input value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)}
             placeholder="Describe in plain English…"
